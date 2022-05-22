@@ -6,19 +6,20 @@ import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -31,8 +32,32 @@ fun myText() {
         Text(text = "Hello", fontSize = 43.sp)
         Text(text = "Hello", fontWeight = FontWeight.W900)
         Text(text = "Hello", textDecoration = TextDecoration.Underline)
-        Text(text = "Hello")
+        SelectionContainer {
+            Text(
+                text = "Hellodsfdsfdsfdsfdsf",
+                Modifier.width(25.dp),
+                maxLines = 1,
+                fontSize = 18.sp,
+                overflow = TextOverflow.Ellipsis)
+        }
+
     }
+}
+
+@Composable
+fun SimpleClickableText() {
+
+    val annText = AnnotatedString(
+        text = "Kruto",
+        spanStyle = SpanStyle(fontSize = 18 .sp),
+        paragraphStyle = ParagraphStyle(textAlign = TextAlign.Center)
+    )
+
+    ClickableText(
+        text = annText,
+        onClick = {
+            Log.d("Click", "$it")
+        })
 }
 
 @Composable

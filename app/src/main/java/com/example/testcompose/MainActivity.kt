@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -19,47 +20,49 @@ import com.example.testcompose.ui.theme.TestComposeTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent() {
-            TestComposeTheme(true) {
-                Column(
-                    verticalArrangement = Arrangement.SpaceBetween,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(MaterialTheme.colors.background)
-                    ) {
+        setContent {
+            SimpleClickableText()
+        }
+    }
 
-                    Column{
-                        TitleMakenna()
-                        SubTitleMakenna()
-                    }
+    @Composable
+    fun firstSplashScreen() {
+        TestComposeTheme(true) {
+            Column(
+                verticalArrangement = Arrangement.SpaceBetween,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colors.background)
+            ) {
 
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_baseline_account_balance_24),
-                        contentDescription = "",
-                        Modifier.size(250.dp).padding(bottom = 32.dp)
-                    )
-
-                    Button(
-                        onClick = { /*TODO*/ },
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = colorResource(id = R.color.purple_200)
-                        ),
-                        modifier = Modifier
-                            .width(250.dp)
-                            .padding(16.dp)
-
-                    ) {
-                        Text(text = "dsfds")
-                    }
+                Column{
+                    TitleMakenna()
+                    SubTitleMakenna()
                 }
 
+                Image(
+                    painter = painterResource(id = R.drawable.ic_baseline_account_balance_24),
+                    contentDescription = "",
+                    Modifier
+                        .size(250.dp)
+                        .padding(bottom = 32.dp)
+                )
 
+                Button(
+                    onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = colorResource(id = R.color.purple_200)
+                    ),
+                    modifier = Modifier
+                        .width(250.dp)
+                        .padding(16.dp)
 
-
+                ) {
+                    Text(text = "dsfds")
+                }
             }
-
         }
-
     }
+
 }
